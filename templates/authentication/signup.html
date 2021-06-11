@@ -1,0 +1,19 @@
+{% extends 'authentication/base.html' %}
+{% load static %}
+
+
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css\bootstrap.min.css' %}">
+    <script src="{% static 'js\bootstrap.min.js' %}"></script>
+{% endblock %}
+
+
+{% block content %}
+
+<h1>you are in signup page</h1>
+<input type="text" class="form-control" placeholder="username">
+
+
+{{form}}
+
+{% endblock %}
