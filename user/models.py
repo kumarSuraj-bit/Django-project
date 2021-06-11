@@ -23,9 +23,9 @@ class User(AbstractUser):
     gender = models.CharField(max_length=10, choices=GENDER_CHOICES, null=True, blank=True)
 
     USERNAME_FIELD = 'username'
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = ['email','full_name']
 
-    objects = CustomUserManager()
+    #objects = CustomUserManager()
 
     def __str__(self):
         return self.username

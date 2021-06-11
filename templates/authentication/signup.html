@@ -13,7 +13,11 @@
 <h1>you are in signup page</h1>
 <input type="text" class="form-control" placeholder="username">
 
+<form method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit">Submit</button>
+</form>
 
-{{form}}
 
 {% endblock %}
