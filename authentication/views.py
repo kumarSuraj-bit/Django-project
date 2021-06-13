@@ -1,8 +1,18 @@
 from django.shortcuts import render,redirect
 from django.views.generic import View
 from .forms import UserForm
+from django.contrib import messages
+
+from django.contrib.auth import (
+                                    authenticate, 
+                                    login, 
+                                    logout, 
+                                    get_user_model,
+                                )
 
 # Create your views here.
+User = get_user_model()
+
 
 class SignupView(View):
     template_name = 'authentication\signup.html'
@@ -36,19 +46,25 @@ class SigninView(View):
     def post(self,request,*args,**keargs):
         email_username = request.POST.get('email_username')
         password = request.POST.get('password')
-
         try:
             user_obj = User.objects.get(username=email_username)
             email = user_obj.email
+            
         except Exception as e:
+            
             email = email_username
-
         user = authenticate(request, email=email, password=password)
         
         if user is None:
             messages.error(request, 'Invalid Login.', extra_tags="error")
-            return render(request, self.template_name) 
-
+            return render(request, self.template_name)
+        
         login(request, user)
         messages.success(request, 'Thanks for Login, Welcome to Insta Clone.', extra_tags='success')
-        return redirect('home_feed_view')
+        return redirect('home_view')
+
+
+class SignoutView(View):
+    def post(self,request,*args,**kwargs):
+        logout(request)
+        return redirect('signin_view')

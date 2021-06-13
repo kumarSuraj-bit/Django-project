@@ -1,12 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Insta Home</title>
-</head>
-<body>
-    <h1 style="text-align: center;">you are in home view</h1>
-</body>
-</html>
+{% extends 'authentication/base.html' %}
+{% load static %}
+
+
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css\bootstrap.min.css' %}">
+    <script src="{% static 'js\bootstrap.min.js' %}"></script>
+{% endblock %}
+
+
+{% block content %}
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-primary" role='alert'>
+            {{ message }}
+        </div>                        
+    {% endfor %}
+{% endif %}
+<h1>you are in home page</h1>
+
+<p style="text-align: center;">
+    <form action="{% url 'signout_view' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">LogOut</button>
+    </form>
+</p>
+
+
+{% endblock %}

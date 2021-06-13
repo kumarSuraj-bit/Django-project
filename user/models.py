@@ -22,8 +22,8 @@ class User(AbstractUser):
     phone_number = models.CharField(max_length=20, null=True, blank=True)
     gender = models.CharField(max_length=10, choices=GENDER_CHOICES, null=True, blank=True)
 
-    USERNAME_FIELD = 'username'
-    REQUIRED_FIELDS = ['email','full_name']
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['username','full_name']
 
     #objects = CustomUserManager()
 

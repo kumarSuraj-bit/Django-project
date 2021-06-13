@@ -5,6 +5,8 @@
 
     <link rel="stylesheet" href="{% static 'css\bootstrap.min.css' %}">
     <script src="{% static 'js\bootstrap.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'maincss\signin.css' %}">
+    
 
 {% endblock %}
 
@@ -13,6 +15,32 @@
 
 {% block content %}
 
-<h1>you are in signin page</h1>
+
+
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-danger" role='alert'>
+            {{ message }}
+        </div>                        
+    {% endfor %}
+{% endif %}
+
+
+
+<div>
+    <p style="text-align: center;">SignIn Here</p>
+<form method="POST">
+    {% csrf_token %}
+    <input type="text" name="email_username" class="form-control" placeholder="Username or email"><br>
+    <input type="password" name="password" class="form-control" placeholder="password"><br>
+    <button type="submit">LogIn</button>
+</form>
+
+
+<a href="{% url 'password_reset' %}">Forgot Password ?</a>
+</div>
+
+
 
 {% endblock %}
