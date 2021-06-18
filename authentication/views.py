@@ -7,7 +7,7 @@ from django.contrib.auth import (
                                     authenticate, 
                                     login, 
                                     logout, 
-                                    get_user_model,
+                                    get_user_model, 
                                 )
 
 # Create your views here.
