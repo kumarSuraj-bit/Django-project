@@ -1,0 +1,29 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+
+{% block extra_head %}
+
+<style>
+    #profileImage{
+        width: 200px;
+    }
+</style>
+    
+{% endblock %}
+
+{% block content %}
+<p>{{ user.username }}</p>
+<p>{{ user.email }}</p>
+
+<div id="profileImage">
+    {% if user.picture %}
+        <img src="{{ user.picture.url }}" alt="Profile image" style="width: 100%;">
+    {% else %}
+        <img src="https://i1.sndcdn.com/avatars-a0kRz4WU6AFrzv27-cQ4BLg-t500x500.jpg" alt="Profile image" style="width: 100%;">
+    {% endif %}
+</div>
+
+
+
+{% endblock %}

@@ -20,7 +20,7 @@ class CustomUserAdmin(UserAdmin):
     fieldsets = (
         ('Personal Details', {'fields': ('email', 'full_name', 'username', 'picture')}),
         ('Permissions', {'fields': ('is_staff', 'is_active')}),
-        ('Optional', {'fields': ('bio', 'website')}),
+        ('Optional', {'fields': ('bio', 'website','phone_number','gender')}),
         )
 
-admin.site.register(User,UserAdmin)
+admin.site.register(User,CustomUserAdmin)
