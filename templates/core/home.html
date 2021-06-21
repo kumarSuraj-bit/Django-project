@@ -6,10 +6,34 @@
 
 <style>
     .col{
-        border: solid 2px black;
-        margin: 10px;
+        
+        margin: 5px;
         padding: 5px;
         text-align: center;
+    }
+    
+    .dropdown-content{
+        display: none;
+    }
+    .dropdown-content a{
+        display: block;
+        text-decoration: none;
+        
+    }
+    .dropbtn{
+        border: none;
+        background-color: white;
+    }
+    .dropdown-content a:hover {background-color: #f1f1f1;}
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+    .dropdown:hover .dropbtn {
+        background-color: #f5b09c;
+    }
+    #post-content{
+        min-height: 50vh;
+        border: solid 1px rgba(0, 0, 0, 0.384);
     }
 </style>
 
@@ -20,17 +44,18 @@
 
 <div class="container">
     <div class="row">
-        <div class="col">title</div>
-        <div class="col">setting</div>
+        <div class="col">Instagram</div>
+        <div class="col"><i class="fa fa-search"></i></div>
+        <div class="col dropdown">
+            <button class="dropbtn"><i class="fas fa-cog"></i></button>
+            <div class="dropdown-content">
+                <a href="{% url 'Profile_view' request.user.username %}">Profile</a>
+                <a href="{% url 'Profile_edit_view' request.user.username %}">edit profile</a>
+                <a href="#">Chnage password</a>
+                <a href="{% url 'signout_view' %}">Logout</a>
+            </div>
+        </div>
     </div>
-    
-    <form action="" method="GET" class="form-inline">
-                
-        <input type="text" class="form-control form-control-sm">
-        <button type="submit" class="ml-2 btn p-0">
-            <i class="fa fa-search"></i>
-        </button>
-    </form>
       
 
     <div class="row">
@@ -42,8 +67,8 @@
         {% endfor %}
         {% endif %}
     </div>
-    <div class="row">
-        <h1>you are in home page</h1>
+    <div class="row" id="post-content">
+        
     </div>
     <div class="row">
         <div class="col">
